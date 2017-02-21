@@ -269,6 +269,13 @@ class ComposerStaticInitdf486b84bb074a334f64a2da6dc6601f
                 0 => __DIR__ . '/..' . '/doctrine/inflector/lib',
             ),
         ),
+        'B' => 
+        array (
+            'Baum' => 
+            array (
+                0 => __DIR__ . '/..' . '/baum/baum/src',
+            ),
+        ),
     );
 
     public static $classMap = array (
@@ -279,6 +286,7 @@ class ComposerStaticInitdf486b84bb074a334f64a2da6dc6601f
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
@@ -290,6 +298,21 @@ class ComposerStaticInitdf486b84bb074a334f64a2da6dc6601f
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'Baum\\Console\\BaumCommand' => __DIR__ . '/..' . '/baum/baum/src/Baum/Console/BaumCommand.php',
+        'Baum\\Console\\InstallCommand' => __DIR__ . '/..' . '/baum/baum/src/Baum/Console/InstallCommand.php',
+        'Baum\\Extensions\\Eloquent\\Collection' => __DIR__ . '/..' . '/baum/baum/src/Baum/Extensions/Eloquent/Collection.php',
+        'Baum\\Extensions\\Eloquent\\Model' => __DIR__ . '/..' . '/baum/baum/src/Baum/Extensions/Eloquent/Model.php',
+        'Baum\\Extensions\\Query\\Builder' => __DIR__ . '/..' . '/baum/baum/src/Baum/Extensions/Query/Builder.php',
+        'Baum\\Generators\\Generator' => __DIR__ . '/..' . '/baum/baum/src/Baum/Generators/Generator.php',
+        'Baum\\Generators\\MigrationGenerator' => __DIR__ . '/..' . '/baum/baum/src/Baum/Generators/MigrationGenerator.php',
+        'Baum\\Generators\\ModelGenerator' => __DIR__ . '/..' . '/baum/baum/src/Baum/Generators/ModelGenerator.php',
+        'Baum\\Move' => __DIR__ . '/..' . '/baum/baum/src/Baum/Move.php',
+        'Baum\\MoveNotPossibleException' => __DIR__ . '/..' . '/baum/baum/src/Baum/MoveNotPossibleException.php',
+        'Baum\\Node' => __DIR__ . '/..' . '/baum/baum/src/Baum/Node.php',
+        'Baum\\Providers\\BaumServiceProvider' => __DIR__ . '/..' . '/baum/baum/src/Baum/Providers/BaumServiceProvider.php',
+        'Baum\\SetBuilder' => __DIR__ . '/..' . '/baum/baum/src/Baum/SetBuilder.php',
+        'Baum\\SetMapper' => __DIR__ . '/..' . '/baum/baum/src/Baum/SetMapper.php',
+        'Baum\\SetValidator' => __DIR__ . '/..' . '/baum/baum/src/Baum/SetValidator.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
