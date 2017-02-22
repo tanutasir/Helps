@@ -65,9 +65,14 @@
                 </div>
             </div>
         </nav>
-        @section('htmlheader')
+        @if (!Auth::guest())
+            <h1>MENU</h1>
+        @section('mastermenu')
             @include('layouts.partials.mastermenu')
         @show
+        @endif
+
+
         @yield('content')
     </div>
 

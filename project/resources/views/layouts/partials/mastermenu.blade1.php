@@ -3,13 +3,9 @@
 use Illuminate\Support\Facades\Request;
 use App\Structs;
 if(Request::isMethod('post')){
-//    $id = Request::input('id');
+    $id = Request::input('id');
 }
-echo '<h1>';
-echo $id;
-echo '<br/>';
-echo $sid;
-echo '</h1>';
+
 //echo '<div id="smoothmenu1" class="ddsmoothmenu">';
 echo '<nav id="nav">';
 $roots = Structs::roots()->get();
@@ -32,10 +28,9 @@ function renderNode($node, $arr)
     $act="";
     if(in_array($node->id, $arr)){$act = " active";}
     if($node->type == "file"){
-        $href = '/'.$node->id;
+        $href = '/page/'.$node->id;
     }else{
-      //  $href = 'javascript:void(0)';
-        $href = '/'.$node->id;
+        $href = 'javascript:void(0)';
     }
     echo "<li id='{$node->id}'  class='submenu".$act."' >";
     echo "<a href='".$href."' class='".$act."' >{$node->text}</a>";

@@ -2,7 +2,7 @@
 
 @section('content')
 <div style="height: 30px;">
-
+<!--
             <nav id="nav">
                 <ul>
                     <li>
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
             </nav>
-
+-->
 </div>
-<div style="height: 35px; background-color: #0fc1d1;position: relative;">jhgkjh</div>
+<div style="height: 35px; background-color: #0fc1d1;position: relative;"></div>
 @endsection

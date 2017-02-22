@@ -24,7 +24,7 @@
     background: linear-gradient(to bottom, #ffffff 0%, #c7c7c7 38%, #c7c7c7 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c7c7c7', GradientType=0 );
 }
-#nav li:hover {
+#nav li.active {
     border: solid 1px #3E78A6;
     background: #dcf3f5;
     background: -moz-linear-gradient(top, #dcf3f5 0%, #0e78a6 38%, #0e78a6 100%);
@@ -45,7 +45,7 @@
 #nav a:hover {
     text-decoration: none;
 }
-#nav li:hover a{
+#nav li.active a{
     text-decoration: none;
     color: white;
 }
@@ -55,21 +55,25 @@
  */
 
 #nav ul li ul {
+    display: none;
     position: absolute;
     z-index: 10;
     width:100%;
     border: solid 1px #3E78A6;
     /*padding:0 0 10px 0;*/
     background: #3E78A6;
+    left:0px;
 
 }
-
+#nav ul li.active ul {
+    display: block;
+}
 #nav ul li ul li {
     border-radius: 0;
-    background: none;
+    background: none !important;
     border: none;
 }
-#nav ul li ul li:hover {
+#nav ul li ul li.active {
     border: none;
     background-color:#212842 !important;
 }
@@ -98,7 +102,7 @@
 }
 #nav ul ul ul {
     line-height:1.6;
-    display: none;
+    display: none !important;
     width:auto;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
