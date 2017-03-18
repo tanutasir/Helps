@@ -9,7 +9,7 @@
 
 <script src="{{ asset('/bootstrap-3.3.7/js/bootstrap.min.js') }}" type="text/javascript"></script>
 
-{{--<script src="{{ asset('/plugins/ui/jquery-ui.min.js') }}" type="text/javascript"></script>--}}
+<script src="{{ asset('/plugins/split.js/split.min.js') }}" type="text/javascript"></script>
 <!-- JsTree -->
 
 
