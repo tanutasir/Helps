@@ -13,11 +13,11 @@ class StructsSlave extends Node
    */
     
     protected $table = "tree_struct_slave";
-    protected $scoped = array('sid');
+    protected $scoped = array('mid');
 
 
-    public function scopeSid($query, $sId) {
-       return $query->where('sid', '=', $sId);
+    public function scopeMid($query, $mId) {
+       return $query->where('mid', '=', $mId);
     }
 
    /* public function Structs()

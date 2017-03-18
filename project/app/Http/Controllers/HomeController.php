@@ -21,9 +21,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id, $sid)
+    public function home($id, $sid)
     {
         return view('home', ['id' => $id, 'sid' => $sid]);
     }
-
+    public function page($id, $sid)
+    {
+        return view('page', ['id' => $id, 'sid' => $sid]);
+    }
+    public function slavePage($id, $sid)
+    {
+        return view('slavePage', ['id' => $id, 'sid' => $sid]);
+    }
 }

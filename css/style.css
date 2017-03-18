@@ -34,6 +34,19 @@
     background: linear-gradient(to bottom, #dcf3f5 0%, #0e78a6 38%, #0e78a6 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dcf3f5', endColorstr='#0e78a6', GradientType=0 );
 }
+#nav ul li a:hover {
+    text-shadow: #2e2e2e 0 0 1px;
+}
+#nav ul li.active a:hover {
+    color: lightgrey;
+}
+
+#nav ul li ul li a:hover {
+    color: black !important;
+}
+#nav ul li ul li.active a:hover {
+    color: lightgrey !important;
+}
 #nav a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
@@ -57,7 +70,7 @@
 #nav ul li ul {
     display: none;
     position: absolute;
-    z-index: 10;
+    /*z-index: 10;*/
     width:100%;
     border: solid 1px #3E78A6;
     /*padding:0 0 10px 0;*/
@@ -116,5 +129,76 @@
 #nav ul ul ul > li:last-child:hover{
     background-color:#3E78A6 !important;
 }
+nav.navbar{
+    z-index: 0;
+}
+.yellow{
+    color:#c0a16b;
+}
+.green{
+    color:blue;
+}
+#overlay{
+    display:none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-image: url('http://helps/img/lightgray.png');
+    background-repeat: repeat;
+    z-index: 0
+}
+#overlayBody{
+    box-shadow: 0 0 10px;
+    display:none;
+    padding: 10px 20px 20px 10px;
+    position: relative;
+    left: 300px;
+    background: white;
+    width: 400px;
+    opacity: 1;
+    border-radius: 0 0 5px 5px;
+    border: solid 1px #5a5a5a/*#C7C7C7*/;
+    border-top: none;
+}
+#overlayBtnsDiv{
+    text-align: right;
+}
+#overlayOkBtn{
+    padding:0 20px;
+}
+#header{
+    height: 50px;
+    background-image: url('/img/header.jpg');
+}
+#loginHeader{
+    height: 50px;
+}
+#headerText {
+    float: left;
+    padding: 3px 0 0 10px;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: #2e2e2e 0 4px 5px;
+    color: white;
+    cursor: pointer;
+}
+#headerText:hover {
+    color: lightgray;
+}
 
+#modal-tree li.jstree-open a i.jstree-icon:before,
+#slave-tree li.jstree-open a i.jstree-icon:before {
+    content: "\e118";
+}
 
+#modal-tree li.jstree-closed a i.jstree-icon:before,
+#slave-tree li.jstree-closed a i.jstree-icon:before {
+    content: "\e117";
+}
+
+#modal-tree li.jstree-leaf a i.jstree-icon.glyphicon-leaf:before,
+#slave-tree li.jstree-leaf a i.jstree-icon.glyphicon-leaf:before{
+    content: "\e103";
+}

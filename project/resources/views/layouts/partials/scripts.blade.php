@@ -3,21 +3,28 @@
 <!-- jQuery 3.1.1 -->
 <script src="{{ asset('/plugins/jquery-3.1.1.min.js') }}"></script>
 <!-- Bootstrap JS -->
-<script src="{{ asset('/js/app.js') }}" type="text/javascript"></script> 
-
 {{--
-<script src="{{ asset('/bootstrap-3.3.7/js/bootstrap.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/js/app.js') }}" type="text/javascript"></script> 
 --}}
 
+<script src="{{ asset('/bootstrap-3.3.7/js/bootstrap.min.js') }}" type="text/javascript"></script>
+
+{{--<script src="{{ asset('/plugins/ui/jquery-ui.min.js') }}" type="text/javascript"></script>--}}
 <!-- JsTree -->
+
+
+
+<script src="{{ asset('/plugins/easyui/jquery.easyui.min.js') }}" type="text/javascript"></script>
+
 <script src="{{ asset('/plugins/jstree/jstree.min.js') }}" type="text/javascript"></script>
 
 <!-- ckeditor -->
 <script src="{{ asset('/plugins/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
-
+{{--<script src="{{ asset('/plugins/w2ui/w2ui-1.5.rc1.min.js') }}" type="text/javascript"></script>--}}
 <!-- ddsmootmenu -->
+{{--
 <script src="{{ asset('/plugins/ddsmoothmenu/ddsmoothmenu.js') }}" type="text/javascript"></script>
-
+--}}
 <!-- jqxwidgets -->
 <script src="{{ asset('/plugins/jqcmenu/jquery.contextMenu.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('/plugins/jqcmenu/jquery.ui.position.min.js') }}" type="text/javascript"></script>

@@ -52,16 +52,16 @@ class nestedSetSlave {
     
     public function get_children($id, $recursive = false) {
         if($id == "#"){
-            $roots = StructsSlave::roots()->sid(Session::get('sid'))->get();
+            $roots = StructsSlave::roots()->mid(Session::get('id'))->get();
         }else{
-            $roots = StructsSlave::where('id', $id)->first()->children()->sid(Session::get('sid'))->get();
+            $roots = StructsSlave::where('id', $id)->first()->children()->mid(Session::get('id'))->get();
         }
         $rslt = array();
         $type = 'folder';
         $types['type'] = $type;
 
          foreach($roots as $root){
-             $href = Session::get('sid')."/".$root['id'];
+             $href = Session::get('id')."/".$root['id'];
              $rslt[] = array('id' => $root['id'], 'text' => $root['text'], 'voice' => $root['voice'],
                  'lang' => $root['lang'], 'type' => $root['type'], 'children' => ($root['rgt'] - $root['lft'] > 1),
                  'a_attr' => ['id' => $href, 'href' => $href ]);
@@ -73,7 +73,7 @@ class nestedSetSlave {
     public function mk($parent, $position = 0, $type) {
         if($parent === 0){
            // DB::transaction(function($type) {
-            $node = StructsSlave::create(['text' => 'New ' . $type, 'type' => $type, 'sid' => Session::get('sid'), 'parent_id' => null]);
+            $node = StructsSlave::create(['text' => 'New ' . $type, 'type' => $type, 'mid' => Session::get('id'), 'parent_id' => null]);
             $data = new Data;
             $data->id = $node->id;
             $data->save();
@@ -82,7 +82,7 @@ class nestedSetSlave {
         }else{
            // DB::transaction(function($type) {
             $node = StructsSlave::where('id', $parent)->first()->children()//->id
-                ->create(['text' => 'New '.$type, 'type' => $type, 'sid' => Session::get('sid')]);
+                ->create(['text' => 'New '.$type, 'type' => $type, 'mid' => Session::get('id')]);
             $data = new Data;
             $data->id = $node->id;
             $data->save();
@@ -110,37 +110,37 @@ class nestedSetSlave {
     
     public function mv($id, $parent, $position = 0) {
         
-        $node = StructsSlave::where('id', $id)->sid(Session::get('sid'))->first();
-        $parentNode = StructsSlave::where('id', $id)->sid(Session::get('sid'))->first()->parent()->first();
+        $node = StructsSlave::where('id', $id)->mid(Session::get('id'))->first();
+        $parentNode = StructsSlave::where('id', $id)->mid(Session::get('id'))->first()->parent()->first();
         if($parent === 0){
-            $roots = StructsSlave::roots()->sid(Session::get('sid'))->withoutNode($node)->get();
+            $roots = StructsSlave::roots()->mid(Session::get('id'))->withoutNode($node)->get();
             $countRoots = count($roots);
             if($countRoots > $position){
                 $target = $roots[$position]['id'];
-                $tnode = StructsSlave::where('id', $target)->sid(Session::get('sid'))->first();
+                $tnode = StructsSlave::where('id', $target)->mid(Session::get('id'))->first();
                 $node->moveToLeftOf($tnode);
             }else{
                 $target = $roots[$position - 1]['id'];
-                $tnode = StructsSlave::where('id', $target)->sid(Session::get('sid'))->first();
+                $tnode = StructsSlave::where('id', $target)->mid(Session::get('id'))->first();
                 $node->moveToRightOf($tnode);
             }
         }else{
-            $targetParentNode = StructsSlave::where('id', $parent)->sid(Session::get('sid'))->first();
+            $targetParentNode = StructsSlave::where('id', $parent)->mid(Session::get('id'))->first();
             if(!$targetParentNode->isLeaf()){
-                $childs = StructsSlave::where('id', $parent)->sid(Session::get('sid'))
+                $childs = StructsSlave::where('id', $parent)->mid(Session::get('id'))
                     ->first()->children()->withoutNode($node)->get();
                 $countChilds = count($childs);
                 if($countChilds > $position){
                     $target = $childs[$position]['id'];
-                    $tnode = StructsSlave::where('id', $target)->sid(Session::get('sid'))->first();
+                    $tnode = StructsSlave::where('id', $target)->mid(Session::get('id'))->first();
                     $node->moveToLeftOf($tnode);
                 }else{
                     $target = $childs[$position - 1]['id'];
-                    $tnode = StructsSlave::where('id', $target)->sid(Session::get('sid'))->first();
+                    $tnode = StructsSlave::where('id', $target)->mid(Session::get('id'))->first();
                     $node->moveToRightOf($tnode);
                 }
             }else{
-                $tnode = StructsSlave::where('id', $parent)->sid(Session::get('sid'))->first();
+                $tnode = StructsSlave::where('id', $parent)->mid(Session::get('id'))->first();
                 $node->makeFirstChildOf($targetParentNode);                
             }
         }

@@ -1,10 +1,10 @@
 <?php
     use App\StructsSlave;
-    echo "<div id='jstreeSlaveNew' style='width: 200px;''>";
-    $roots = StructsSlave::roots()->sid(Session::get('sid'))->get();
+    echo "<div id='jstreeSlave' style='width: 200px;''>";
+    $roots = StructsSlave::roots()->mid($id)->get();
     $arr = array();
-    if($id != null && StructsSlave::where('id', $idSlave)->first()){
-        $obj = StructsSlave::where('id', $idSlave)->first()->ancestorsAndSelf()->get();
+    if($id != null && StructsSlave::where('id', $sid)->first()){
+        $obj = StructsSlave::where('id', $sid)->first()->ancestorsAndSelf()->get();
 
         foreach($obj as $o){
             array_push($arr, $o->id);;
@@ -13,18 +13,18 @@
     }
     echo "<ul>";
     foreach($roots as $root):
-        renderNodeSlave($root, $arr);
+        renderNodeSlave($root, $arr, $id, $sid);
     endforeach;
-    function renderNodeSlave($node, $arr)
+    function renderNodeSlave($node, $arr, $id, $sid)
     {
         $act="";
         $opn="";
 
         if(in_array($node->id, $arr)){$opn = " jstree-open";}
-        if($node->id == Session::get('ssid')){$act = " active";}
+        if($node->id == $sid){$act = " active";}
         if($node->type == "file"){
-            $dataJstree='{"type":"file"}';+-
-            $href = url("/page/".Session::get('sid')."/".$node->id);
+            $dataJstree='{"type":"file"}';
+            $href = url("/".$id."/".$node->id);
             $icn ="";
         }else{
             $dataJstree='{"type":"folder"}';
@@ -36,7 +36,7 @@
 
         if ($node->children()->count() > 0) {
             echo "<ul>";
-            foreach ($node->children as $child) renderNodeSlave($child, $arr);
+            foreach ($node->children as $child) renderNodeSlave($child, $arr, $id, $sid);
             echo "</ul>";
         }
 

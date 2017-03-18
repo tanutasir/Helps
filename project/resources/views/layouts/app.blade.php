@@ -2,78 +2,87 @@
 <html lang="{{ config('app.locale') }}">
 
 @section('htmlheader')
-    @include('layouts.partials.htmlheader')
+    @include('layouts.partials.htmlHeader')
 @show
 
 
 <body>
+@if (!Auth::guest())
+    <button id="menuEditBtn" style="left:300px;position: absolute;">Edit menu</button>
+@endif
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            @if (\Request::segment(1)!="login")
-                                <li><a href="{{ route('login') }}">Login</a></li>
-                            @endif
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <!-- Right Side Of Navbar -->
         @if (!Auth::guest())
-            <h1>MENU</h1>
-        @section('mastermenu')
-            @include('layouts.partials.mastermenu')
-        @show
+            <div id="header">
+                <div id="headerText" onclick="javascript:window.location.href = '{{ url('/') }}'">helps.16mb.com</div>
+        @else
+            <div id="loginHeader"></div>
         @endif
+            <div style="padding-right: 20px;">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+
+                    @if (Auth::guest())
+                        @if (\Request::segment(1)!="login")
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                        @endif
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @else
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Logout
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+
+        @if (!Auth::guest())
+            @section('mastermenu')
+                @include('layouts.partials.masterMenu')
+            @show
+        @endif
+        <div id="cc" class="easyui-layout" style="width:100%;height:600px;">
+{{--            <div data-options="region:'north',title:'North Title',split:true" style="height:100px;"></div>--}}
+            <div data-options="region:'south',title:'Footer',split:true,hideCollapsedContent:false" style="height:100px;"></div>
+            <div data-options="region:'east',title:'Bookmarks',split:true,collapsed:true,hideCollapsedContent:false" style="width:200px;"></div>
+            <div data-options="region:'west',title:'Menu',split:true,hideCollapsedContent:false" style="width:200px;"></div>
+            <div data-options="region:'center',title:'Body'" style="padding:5px;background:#eee;">
+                @yield('content')
+           </div>
+        {{--</div>--}}
 
 
-        @yield('content')
+
+
+    </div>
+    <div id="overlay">
+        <div id="overlayBody">
+            <div>
+                <button id="overlayNewButton">New</button>
+            </div>
+            <div id="overlayText">
+
+            </div>
+            <div id="overlayBtnsDiv">
+                <button id="overlayOkBtn">OK</button>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
